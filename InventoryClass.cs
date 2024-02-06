@@ -10,11 +10,13 @@ namespace Module_3_Competency_Project
 {
     internal class InventoryClass
     {
-        double itemID;
-        string itemName;
-        double itemPrice;
-        double itemQuantity;
-        string reply;
+        private double itemID;
+        private string itemName;
+        private double itemPrice;
+        private double itemQuantity;
+        //private string reply;
+        private double purchaseCost;
+        private double totalCost;
 
         public InventoryClass(double i, string n, double p, double q)
         {
@@ -24,34 +26,79 @@ namespace Module_3_Competency_Project
             this.itemQuantity = q;
         }
 
-        public void displayItem()
+        // Getters
+        public double getItemID() { return itemID; }
+        public string getItemName() { return itemName; }
+        public double getItemPrice() { return itemPrice; }
+        public double getItemQuantity() { return itemQuantity; }
+        public double getPurchaseCost() { return purchaseCost; }
+        public double getTotalCost() { return totalCost;}
+
+        // Setters
+        public void setGetItem(double i)
         {
-            WriteLine($"Item {itemID} {itemName}, {itemPrice:C}, quantity: {itemQuantity}");
+            itemID = i;
         }
 
-        public void purchase()
+        public void setItemName(string n)
+        {
+            itemName = n;
+        }
+
+        public void setItemPrice(double p)
+        {
+            itemPrice = p;
+        }
+
+        public void setItemQuantity(double q)
+        {
+            itemQuantity = q;
+        }
+
+        public void setPurchaseCost(double pC)
+        {
+            purchaseCost = pC;
+        }
+
+        public void setTotalCost(double tC)
+        {
+            totalCost = tC;
+        }
+
+        //public string displayItem() => $"Item {itemID} {itemName}, {itemPrice:C}, quantity: {itemQuantity}";
+
+        public override string ToString()
+        {
+            return $"Item {itemID} {itemName}, {itemPrice:C}, quantity: {itemQuantity}";
+        }
+
+        public (double, double) purchase()
         {
             double qtyReq;
-            double purchaseCost;
 
-            Write("How many do you want?");
+            Write("How many do you want? ");
             qtyReq = double.Parse(ReadLine());
-            do
-            {
-                if (itemQuantity < qtyReq)
-                {
-                    WriteLine("There is not enough quantity of that item. Please request a different amount.");
-                }
-                else
-                {
-                    itemQuantity -= qtyReq;
-                    purchaseCost = qtyReq * itemPrice;
-                    WriteLine($"{purchaseCost:C}");
-                }
 
-                WriteLine("\nWould you like anything else? Yes(Y) or No(N)");
-                reply = ReadLine();
-            } while (reply == "Y");
+            if (itemQuantity < qtyReq)
+            {
+                WriteLine("There is not enough quantity of that item. Please request a different amount.");
+            }
+            else
+            {
+                itemQuantity -= qtyReq;
+                purchaseCost = qtyReq * itemPrice;
+                totalCost += purchaseCost;
+            }
+
+            return (purchaseCost, totalCost);
+
+            //do
+            //{
+
+
+            //    WriteLine("\nWould you like anything else? Yes(Y) or No(N)");
+            //    reply = ReadLine();
+            //} while (reply == "Y");
         }
     }
 }

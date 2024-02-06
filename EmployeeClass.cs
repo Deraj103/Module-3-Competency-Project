@@ -9,6 +9,18 @@ namespace Module_3_Competency_Project
 {
     internal class EmployeeClass
     {
+        private double empID;
+        private string fName;
+        private string lName;
+
+        public EmployeeClass(double ID, string fN, string lN)
+        {
+            this.empID = ID;
+            this.fName = fN;
+            this.lName = lN;
+        }
+
+        public string displayEmp() => $"{empID}, {fName} {lName}";
 
     }
 }
