@@ -32,8 +32,7 @@ namespace Module_3_Competency_Project
         public double getItemPrice() { return itemPrice; }
         public double getItemQuantity() { return itemQuantity; }
         public double getPurchaseCost() { return purchaseCost; }
-        public double getTotalCost() { return totalCost;}
-
+        public double getTotalCost() { return totalCost; }
         // Setters
         public void setGetItem(double i)
         {
@@ -60,11 +59,6 @@ namespace Module_3_Competency_Project
             purchaseCost = pC;
         }
 
-        public void setTotalCost(double tC)
-        {
-            totalCost = tC;
-        }
-
         //public string displayItem() => $"Item {itemID} {itemName}, {itemPrice:C}, quantity: {itemQuantity}";
 
         public override string ToString()
@@ -72,7 +66,7 @@ namespace Module_3_Competency_Project
             return $"Item {itemID} {itemName}, {itemPrice:C}, quantity: {itemQuantity}";
         }
 
-        public (double, double) purchase()
+        public void purchase(ref double totalCost)
         {
             double qtyReq;
 
@@ -90,7 +84,7 @@ namespace Module_3_Competency_Project
                 totalCost += purchaseCost;
             }
 
-            return (purchaseCost, totalCost);
+            //return (purchaseCost, totalCost);
 
             //do
             //{

@@ -10,6 +10,9 @@ namespace Module_3_Competency_Project_Purchases
 {
     internal class Program
     {
+
+        public static double totalCost;
+
         static void Main(string[] args)
         {
             WriteLine("Module 3 Competency Project: Purchases by Jared Tims\n");
@@ -32,11 +35,11 @@ namespace Module_3_Competency_Project_Purchases
             WriteLine(item1.ToString());
             WriteLine(item2.ToString());
 
-            WriteLine($"\nProcessing purchasses for Customer {tempC.displayCust()}");
+            WriteLine($"\nProcessing purchases for Customer {tempC.displayCust()}");
             WriteLine(item1.ToString());
-            item1.purchase();
+            item1.purchase(ref totalCost);
             WriteLine(item2.ToString());
-            item2.purchase();
+            item2.purchase(ref totalCost);
             WriteLine($"Total purchase for customer {tempC.displayCust()}: {tempI.getTotalCost():C}");
 
             WriteLine("\nInventory");
