@@ -14,10 +14,10 @@ namespace Module_3_Competency_Project
         private string itemName;
         private double itemPrice;
         private double itemQuantity;
-        //private string reply;
         private double purchaseCost;
-        private double totalCost;
+        private static double totalCost;
 
+        // constructor
         public InventoryClass(double i, string n, double p, double q)
         {
             this.itemID = i;
@@ -33,66 +33,66 @@ namespace Module_3_Competency_Project
         public double getItemQuantity() { return itemQuantity; }
         public double getPurchaseCost() { return purchaseCost; }
         public double getTotalCost() { return totalCost; }
-        // Setters
-        public void setGetItem(double i)
-        {
-            itemID = i;
-        }
 
-        public void setItemName(string n)
-        {
-            itemName = n;
-        }
-
-        public void setItemPrice(double p)
-        {
-            itemPrice = p;
-        }
-
-        public void setItemQuantity(double q)
-        {
-            itemQuantity = q;
-        }
-
-        public void setPurchaseCost(double pC)
-        {
-            purchaseCost = pC;
-        }
-
-        //public string displayItem() => $"Item {itemID} {itemName}, {itemPrice:C}, quantity: {itemQuantity}";
-
+        // displays the item information
         public override string ToString()
         {
             return $"Item {itemID} {itemName}, {itemPrice:C}, quantity: {itemQuantity}";
         }
 
-        public void purchase(ref double totalCost)
+        // calculates the purchase
+        public void purchase()
         {
             double qtyReq;
 
-            Write("How many do you want? ");
-            qtyReq = double.Parse(ReadLine());
-
-            if (itemQuantity < qtyReq)
+            try
             {
-                WriteLine("There is not enough quantity of that item. Please request a different amount.");
+                Write("How many do you want? ");
+                qtyReq = double.Parse(ReadLine());
+
+                if (itemQuantity < qtyReq)
+                {
+                    WriteLine("Not enough inventory in stock, no sale.");
+                    totalCost = 0;
+                }
+                else
+                {
+                    itemQuantity -= qtyReq;
+                    purchaseCost = qtyReq * itemPrice;
+                    totalCost += purchaseCost;
+                }
             }
-            else
+            catch (Exception e)
             {
-                itemQuantity -= qtyReq;
-                purchaseCost = qtyReq * itemPrice;
-                totalCost += purchaseCost;
+                WriteLine("Input string was not in a correct format.");
             }
-
-            //return (purchaseCost, totalCost);
-
-            //do
+            //finally
             //{
+            //    itemQuantity -= qtyReq;
+            //    purchaseCost = qtyReq * itemPrice;
+            //    totalCost += purchaseCost;
+            //}
 
+        }
+        // calculates the total discount and discount total for employee purchases.
+        public void employeeDiscount()
+        {
+            double discount = .25;
+            double totalDiscount;
+            double discountTotal;
 
-            //    WriteLine("\nWould you like anything else? Yes(Y) or No(N)");
-            //    reply = ReadLine();
-            //} while (reply == "Y");
+            totalDiscount = totalCost * discount;
+            WriteLine($"Employee discount = {totalDiscount:C}");
+            discountTotal = totalCost - totalDiscount;
+            WriteLine($"Total purchase after discount: {discountTotal:C}");
+        }
+
+        // resets total cost for new purchaser.
+        public double resetTotalCost()
+        {
+            totalCost = 0;
+
+            return totalCost;
         }
     }
 }
