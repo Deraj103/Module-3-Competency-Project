@@ -66,13 +66,6 @@ namespace Module_3_Competency_Project
             {
                 WriteLine("Input string was not in a correct format.");
             }
-            //finally
-            //{
-            //    itemQuantity -= qtyReq;
-            //    purchaseCost = qtyReq * itemPrice;
-            //    totalCost += purchaseCost;
-            //}
-
         }
         // calculates the total discount and discount total for employee purchases.
         public void employeeDiscount()
