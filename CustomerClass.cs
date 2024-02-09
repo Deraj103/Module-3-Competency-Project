@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Versioning;
@@ -21,7 +22,10 @@ namespace Module_3_Competency_Project
             this.lName = lN;
         }
 
-        public string displayCust() => $"{custID}, {fName} {lName}";
+        public override string ToString()
+        {
+            return $"{custID}, {fName} {lName}";
+        }
 
     }
 }

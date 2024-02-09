@@ -20,7 +20,10 @@ namespace Module_3_Competency_Project
             this.lName = lN;
         }
 
-        public string displayEmp() => $"{empID}, {fName} {lName}";
+        public override string ToString()
+        {
+            return $"{empID}, {fName} {lName}";
+        }
 
     }
 }

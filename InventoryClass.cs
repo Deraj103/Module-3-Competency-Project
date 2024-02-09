@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Module_3_Competency_Project_Purchases;
+using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.NetworkInformation;
@@ -15,7 +17,7 @@ namespace Module_3_Competency_Project
         private double itemPrice;
         private double itemQuantity;
         private double purchaseCost;
-        private static double totalCost;
+        public static double totalCost;
 
         // constructor
         public InventoryClass(double i, string n, double p, double q)
@@ -41,49 +43,19 @@ namespace Module_3_Competency_Project
         }
 
         // calculates the purchase
-        public void purchase()
+        public double purchase(double qty)
         {
-            double qtyReq;
-
-            try
+            if (itemQuantity < qty)
             {
-                Write("How many do you want? ");
-                qtyReq = double.Parse(ReadLine());
-
-                if (itemQuantity < qtyReq)
-                {
-                    WriteLine("Not enough inventory in stock, no sale.");
-                    totalCost = 0;
-                }
-                else
-                {
-                    itemQuantity -= qtyReq;
-                    purchaseCost = qtyReq * itemPrice;
-                    totalCost += purchaseCost;
-                }
+                WriteLine("Not enough inventory in stock, no sale.");
+                totalCost = 0;
             }
-            catch (Exception e)
+            else
             {
-                WriteLine("Input string was not in a correct format.");
+                itemQuantity -= qty;
+                purchaseCost = qty * itemPrice;
+                totalCost += purchaseCost;
             }
-        }
-        // calculates the total discount and discount total for employee purchases.
-        public void employeeDiscount()
-        {
-            double discount = .25;
-            double totalDiscount;
-            double discountTotal;
-
-            totalDiscount = totalCost * discount;
-            WriteLine($"Employee discount = {totalDiscount:C}");
-            discountTotal = totalCost - totalDiscount;
-            WriteLine($"Total purchase after discount: {discountTotal:C}");
-        }
-
-        // resets total cost for new purchaser.
-        public double resetTotalCost()
-        {
-            totalCost = 0;
 
             return totalCost;
         }
