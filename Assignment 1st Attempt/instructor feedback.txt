@@ -1,0 +1,5 @@
+Hi Jared, The inventory class should only declare variables for ID, name, price and quantity. (purchaseCost and totalCost are not needed.) 
+It has only one method, purchase. The purchase method is passed the quantity and "returns" a double for the cost of that purchase. Therefore, 
+the user input for "How many do you want?" is coded in Main. ---------------- In the Main method, use a loop to go through all 4 purchasers. 
+Note this requires use of a temporary object to be able to re-use the code. The temp object should be type "object" so it can hold either a 
+Customer or Employee object. (ie. object temp = cust1). (See attached code snippet). If the purchaser IS an employee apply the 25% discount to the total.

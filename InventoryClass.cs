@@ -28,7 +28,7 @@ namespace Module_3_Competency_Project
             this.itemQuantity = q;
         }
 
-        // Getters
+        // getters
         public double getItemID() { return itemID; }
         public string getItemName() { return itemName; }
         public double getItemPrice() { return itemPrice; }
@@ -36,13 +36,13 @@ namespace Module_3_Competency_Project
         public double getPurchaseCost() { return purchaseCost; }
         public double getTotalCost() { return totalCost; }
 
-        // displays the item information
+        // displays the item info
         public override string ToString()
         {
             return $"Item {itemID} {itemName}, {itemPrice:C}, quantity: {itemQuantity}";
         }
 
-        // calculates the purchase
+        // method to calculate the purchase cost
         public double purchase(double qty)
         {
             if (itemQuantity < qty)

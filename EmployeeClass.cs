@@ -13,6 +13,7 @@ namespace Module_3_Competency_Project
         private string fName;
         private string lName;
 
+        // constructor
         public EmployeeClass(double ID, string fN, string lN)
         {
             this.empID = ID;
@@ -20,6 +21,7 @@ namespace Module_3_Competency_Project
             this.lName = lN;
         }
 
+        // displays employee info
         public override string ToString()
         {
             return $"{empID}, {fName} {lName}";

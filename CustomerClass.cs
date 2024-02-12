@@ -15,6 +15,7 @@ namespace Module_3_Competency_Project
         private string fName;
         private string lName;
 
+        // constructor
         public CustomerClass(double ID, string fN, string lN)
         {
             this.custID = ID;
@@ -22,6 +23,7 @@ namespace Module_3_Competency_Project
             this.lName = lN;
         }
 
+        // displays customer info
         public override string ToString()
         {
             return $"{custID}, {fName} {lName}";
